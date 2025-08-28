@@ -15,9 +15,9 @@ Esta sección resume la lógica detrás de la implementación de los modelos, la
 -	La distribución de 'materiales_distintos' es relativamente uniforme. Esto sugiere que los pedidos se distribuyen de manera equitativa en cuanto a “cuántos materiales diferentes” compran.
 -	Se estimó valioso crear una variable que indique recencia por cliente.
 -	Luego de las consideraciones arriba colocadas, se crean las variables agregadas:
-  - pais
- 	- total_pedidos
-  - pedidos_digital
+    - pais
+ 	  - total_pedidos
+    - pedidos_digital
   - prop_pedidos_digital
   - mediana_fx_usd
   - sum_fx_usd
