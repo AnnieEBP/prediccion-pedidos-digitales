@@ -15,34 +15,34 @@ Esta sección resume la lógica detrás de la implementación de los modelos, la
 -	La distribución de 'materiales_distintos' es relativamente uniforme. Esto sugiere que los pedidos se distribuyen de manera equitativa en cuanto a “cuántos materiales diferentes” compran.
 -	Se estimó valioso crear una variable que indique recencia por cliente.
 -	Luego de las consideraciones arriba colocadas, se crean las variables agregadas:
--	  pais
--	  total_pedidos
--	  pedidos_digital
--	  prop_pedidos_digital
--	  mediana_fx_usd
--	  sum_fx_usd
--	  mediana_materiales
--	  ult_pedido
--	  freq_visitas
--	  recencia
--	  ult_pedidos (indica si la última compra realizada fue a través del medio digital)
+1. pais
+2. total_pedidos
+3. pedidos_digital
+4. prop_pedidos_digital
+5. mediana_fx_usd
+6. sum_fx_usd
+7. mediana_materiales
+8. ult_pedido
+9. freq_visitas
+10. recencia
+11. ult_pedidos (indica si la última compra realizada fue a través del medio digital)
   
 -	Se contruye una variable respuesta dicotómica considerando si la última compra fue realizada a través de un medio digital `ult_digital`
 
 ### 1.3.	Preparación de los datos 
 - Codificación de variables
--     Las variables nominales se codificaron mediante codificación ficticia. Este método se prefirió a la codificación One-Hot, ya que la codificación ficticia omite una de las coordenadas, evitando así la multicolinealidad.
--     Para la variable ordinal `freq_visitas`, primero fue necesario ordenar las clases y, a continuación, se asignó un número a cada una (1, 2, 3, etc.). 
+  Las variables nominales se codificaron mediante codificación dummy. Este método se prefirió a la codificación One-Hot, ya que la codificación ficticia omite una de las coordenadas, evitando así la multicolinealidad.
+- Para la variable ordinal `freq_visitas`, primero fue necesario ordenar las clases y, a continuación, se asignó un número a cada una (1, 2, 3, etc.). 
 
-- Escalado
+- Estandarización
   La decisión de escalar los datos depende del tipo de modelo utilizado. En este caso, se consideraron dos tipos de modelos: un modelo del tipo lineal (logistic regression) y otro basados en conjunto de árboles, XGBoost. Los datos se escalaron utilizando el método de z-score.
 
 - Detección de anomalías
   Para identificar y remover valores atípicos se empleó Chebyshevs con un k=3.  Para un rango de tres desviaciones estándar alrededor de la media, el teorema de Chebyshev establece que al menos el 89 % de las observaciones se encuentran dentro de ese rango. En este caso, el 98.6 % de los datos se encuentra dentro de tres desviaciones estándar, lo que indica que no existe un número significativo de anomalías; por lo tanto, se descartaron los valores fuera del rango.
 
 - Importancia de variables (Feature Importance)
--     La matriz de correlación indicó las características con alta asociación con la variable objetivo; sin embargo, para conocer cuantitativamente cuáles son las variables que tienen mayor influencia en el cliente para pedir digitalmente, se ajustó un Random Forest. Este algoritmo tiene la ventaja que calcula la varianza aportada por cada variable. Los resultados demostraron que tres variables explican aproximadamente el 91% de la varianza total, se decidió trabajar únicamente con las siguientes variables: ["prop_pedidos_digital", "pedidos_digital", "sum_fx_usd"]
--     **Proporción del conjunto de prueba:** 0,25
+-   La matriz de correlación indicó las características con alta asociación con la variable objetivo; sin embargo, para conocer cuantitativamente cuáles son las variables que tienen mayor influencia en el cliente para pedir digitalmente, se ajustó un Random Forest. Este algoritmo tiene la ventaja que calcula la varianza aportada por cada variable. Los resultados demostraron que tres variables explican aproximadamente el 91% de la varianza total, se decidió trabajar únicamente con las siguientes variables: ["prop_pedidos_digital", "pedidos_digital", "sum_fx_usd"]
+-   **Proporción del conjunto de prueba:** 0,25
 
 ### 1.4. Selección de modelo
 - Logistic Regression
