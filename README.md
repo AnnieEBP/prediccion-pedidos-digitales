@@ -16,17 +16,17 @@ Esta sección resume la lógica detrás de la implementación de los modelos, la
 -	Se estimó valioso crear una variable que indique recencia por cliente.
 -	Luego de las consideraciones arriba colocadas, se crean las variables agregadas:
     - pais
- 	  - total_pedidos
+    - total_pedidos
     - pedidos_digital
-  - prop_pedidos_digital
-  - mediana_fx_usd
-  - sum_fx_usd
-  - mediana_materiales
-  - ult_pedido
-  - freq_visitas
-  - recencia
-  - ult_pedidos (indica si la última compra realizada fue a través del medio digital)
-  
+    - prop_pedidos_digital
+    - mediana_fx_usd
+    - sum_fx_usd
+    - mediana_materiales
+    - ult_pedido
+    - freq_visitas
+    - recencia
+    - ult_pedidos (indica si la última compra realizada fue a través del medio digital)
+
 -	Se contruye una variable respuesta dicotómica considerando si la última compra fue realizada a través de un medio digital `ult_digital`
 
 ### 1.3.	Preparación de los datos 
